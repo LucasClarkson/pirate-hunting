@@ -1,0 +1,31 @@
+{
+  "name": "pirate-hunting",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "forever -c /usr/local/bin/nodemon server.js --exitcrash -L --debug=5861",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LucasClarkson/pirate-hunting.git"
+  },
+  "keywords": [
+    "hunting"
+  ],
+  "author": "Lucas Clarkson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LucasClarkson/pirate-hunting/issues"
+  },
+  "homepage": "https://github.com/LucasClarkson/pirate-hunting#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "forever": "^0.15.3",
+    "guid": "0.0.12",
+    "mongod": "^2.0.0",
+    "mongodb": "^2.2.33"
+  }
+}

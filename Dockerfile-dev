@@ -1,0 +1,26 @@
+FROM node:7.10
+
+# Install nodemon
+RUN npm install -g nodemon
+
+# Install forever
+RUN npm install -g forever
+
+# next several lines are for non-dev deployment
+# RUN mkdir /src
+
+# Bundle app source - COPY command for a non-dev deployment, for dev we want the container to use files from
+# a local directory so changes are propogated immediately
+# COPY app-src /src/
+
+# cannot mount specific directory in dockerfile because this would break portability
+# for dev container needs to be started with -v command to mount the src directory "-v $(PWD)/src://src -w //src"
+#VOLUME ["/src"]
+
+# Install app dependencies
+# WORKDIR /src
+RUN npm install
+
+EXPOSE 80
+
+ENTRYPOINT ["npm", "start"]
