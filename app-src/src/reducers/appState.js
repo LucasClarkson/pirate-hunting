@@ -17,6 +17,16 @@ const appState = (state = {
                 showHunters: true,
                 showStands: false
             };
+        
+        case 'CHANGE_PAGE':
+            return {
+                ...state,
+                showHome: action.page == 'home',
+                showPlanner: action.page == 'planner',
+                showHunts: action.page == 'hunts',
+                showHunters: action.page == 'hunters',
+                showStands: action.page == 'stands'
+            }
 
         default: return { ...state };
     }

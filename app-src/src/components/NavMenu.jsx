@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class NavMenu extends Component {
   render() {
-    const { showPlanner, showHunts, showHunters, showStands } = this.props;
+    const { showPlanner, showHunts, showHunters, showStands, changePage } = this.props;
 
     const navMenuStyle = {
         width: "80%"
@@ -35,16 +35,16 @@ class NavMenu extends Component {
 
     return (
         <div style={this.props.style}>
-            <div style={getButtonStyle(showPlanner)}>
+            <div style={getButtonStyle(showPlanner)} onClick={() => { changePage("planner") }}>
                 <p style={navMenuButtonTextStyle}>Plan Hunt</p>
             </div>
-            <div style={getButtonStyle(showHunts)}>
+            <div style={getButtonStyle(showHunts)} onClick={() => { changePage("hunts") }}>
                 <p style={navMenuButtonTextStyle}>Hunts</p>
             </div>
-            <div style={getButtonStyle(showHunters)}>
+            <div style={getButtonStyle(showHunters)} onClick={() => { changePage("hunters") }}>
                 <p style={navMenuButtonTextStyle}>Hunters</p>
             </div>
-            <div style={getButtonStyle(showStands)}>
+            <div style={getButtonStyle(showStands)} onClick={() => { changePage("stands") }}>
                 <p style={navMenuButtonTextStyle}>Stands</p>
             </div>
         </div>

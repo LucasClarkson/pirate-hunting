@@ -12,7 +12,8 @@ MongoClient.connect("mongodb://mongodb:27017/pirate-hunting", function(err, data
     const stand = require('./api/stand')(app, database);
     const hunt = require('./api/hunt')(app, database);
 
-    app.use(express.static('app-src'))
+    app.use('/static', express.static('app-src/public'));
+    app.use(express.static('app-src/build'));
 
     app.listen(80, function () {
         console.log('Pirate hunting on port 80')
