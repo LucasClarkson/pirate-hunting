@@ -7,7 +7,7 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ".:/app"
+      - ./app-src/build:/app/app-src/build
     working_dir: "/app"
   mongodb:
     image: mongo:latest

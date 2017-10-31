@@ -5,17 +5,19 @@ class NavMenu extends Component {
     const { showPlanner, showHunts, showHunters, showStands, changePage } = this.props;
 
     const navMenuStyle = {
-        width: "80%"
+        ...this.props.style,
+        border: "1px solid #000"
     };
 
     const getButtonStyle = function (selected) {
         let style = {
             float: "left",
             height: "100%",
-            width: "25%",
+            width: "calc(25% - 2px)",
             background: "#60646c",
             color: "#FFFFFF",
-            cursor: "pointer"
+            cursor: "pointer",
+            border: "1px solid #000"
         };
 
         if (selected) {
@@ -34,7 +36,7 @@ class NavMenu extends Component {
     }
 
     return (
-        <div style={this.props.style}>
+        <div style={navMenuStyle}>
             <div style={getButtonStyle(showPlanner)} onClick={() => { changePage("planner") }}>
                 <p style={navMenuButtonTextStyle}>Plan Hunt</p>
             </div>

@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
 import NavMenu from './components/NavMenu';
 
+//Pages
+import Hunters from './Hunters/HuntersContainer';
+
 class App extends Component {
+  componentDidMount() {
+    this.props.fetchHuntersIfNeeded()
+  }
+
   render() {
     const { showHome, showPlanner, showHunts, showHunters, showStands } = this.props.appState;
     const { changePage } = this.props;
@@ -22,13 +29,19 @@ class App extends Component {
       float: "left"
     }
 
+    const pageStyle = {
+      width: "100%",
+      float: "left",
+      paddingTop: "32px"
+    }
+
     return (
       <div style={rootStyle}>
         <div style={innerContainerStyle}>
           <NavMenu style={navMenuStyle} {...{showPlanner, showHunts, showHunters, showStands, changePage}} />
           {showPlanner && <div>Planner!</div>}
           {showHunts && <div>Hunts!</div>}
-          {showHunters && <div>Hunters!</div>}
+          {showHunters && <Hunters style={pageStyle} />}
           {showStands && <div>Stands!</div>}
         </div>
       </div>
