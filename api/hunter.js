@@ -29,6 +29,29 @@ module.exports = function (app, db) {
         });
     });
 
+    app.get('/api/hunter/:hunterId/withHunts', function (req, res) {
+        db.collection('hunter').findOne({hunterId: req.params.hunterId}, function(err, hunter) {
+            if(err) return next(err);
+
+            if (hunter == null) return res.send({ok: false, why: "hunter-not-found"});
+
+            hunter.hunts = [];
+
+            db.collection("hunt").find({hunterId: req.params.hunterId}, function (err, hunts) {
+                if(err) return next(err);
+
+                hunts.each(function (err, hunt) {
+                    if (hunt == null) {
+                        return res.send({ok: true, hunter: hunter});
+                    }
+                    else {
+                        hunter.hunts.push(hunt);
+                    }
+                })
+            })
+        });
+    });
+
     app.post('/api/hunter', function (req, res) {
         if (!req.body.name) res.send({ok: false, why: "missing-name"});
         db.collection("hunter").findOne({hunterId: req.body.name.toLowerCase().split(' ').join('_')}, function(err, hunter) {
@@ -78,5 +101,21 @@ module.exports = function (app, db) {
             
             res.send({ok: true});
         });
+    });
+
+    app.get('/api/hunter/:hunterId/hunts', function (req, res) {
+        db.collection("hunt").find({hunterId: req.params.hunterId}, function (err, hunts) {
+            if(err) return next(err);
+
+            var retval = [];
+            hunts.each(function (err, hunt) {
+                if (hunt == null) {
+                    res.send({ok: true, hunts: retval});
+                }
+                else {
+                    retval.push(hunt);
+                }
+            })
+        })
     });
 }

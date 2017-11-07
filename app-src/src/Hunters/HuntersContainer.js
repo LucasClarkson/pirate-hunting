@@ -5,7 +5,9 @@ import Hunters from './Hunters';
 
 const appStateToProps = (state) => {
     return { 
-        hunters: state.hunters.items
+        hunters: state.hunters.items,
+        hunts: state.hunts.byHunter,
+        stands: state.stands.byId
      }
 }
 

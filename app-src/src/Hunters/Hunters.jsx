@@ -5,7 +5,9 @@ class Hunters extends Component {
     render() {
 
         const hunterItemStyle = {
-            marginBottom: "8px"
+            marginBottom: "8px",
+            float: "left",
+            width: "100%"
         };
 
         return (
@@ -13,7 +15,7 @@ class Hunters extends Component {
                 {
                     (this.props.hunters && this.props.hunters.length > 0) ? 
                     this.props.hunters.map((hunter, index) => {
-                      return <HunterRow hunter={hunter} style={hunterItemStyle} />
+                      return <HunterRow hunter={hunter} hunts={this.props.hunts[hunter.hunterId]} stands={this.props.stands} style={hunterItemStyle} />
                     }) : <p>You aint got no hunters</p>
                 }
             </div>

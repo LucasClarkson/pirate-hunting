@@ -6,7 +6,9 @@ import Hunters from './Hunters/HuntersContainer';
 
 class App extends Component {
   componentDidMount() {
-    this.props.fetchHuntersIfNeeded()
+    this.props.fetchHuntersIfNeeded();
+    this.props.fetchHuntsIfNeeded();
+    this.props.fetchStandsIfNeeded();
   }
 
   render() {

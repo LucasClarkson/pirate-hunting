@@ -7,19 +7,19 @@ RUN npm install -g nodemon
 RUN npm install -g forever
 
 # next several lines are for non-dev deployment
-RUN mkdir /app
+# RUN mkdir /app
 
 # Bundle app source - COPY command for a non-dev deployment, for dev we want the container to use files from
 # a local directory so changes are propogated immediately
-COPY ./ /app/
+# COPY ./ /app/
 
-WORKDIR /app
-RUN npm install
-WORKDIR ./app-src
-RUN npm install
-RUN rm -R -f build
+# WORKDIR /app
+# RUN npm install
+# WORKDIR ./app-src
+# RUN npm install
+# RUN rm -R -f build
 # RUN npm run build
-WORKDIR ../
+# WORKDIR ../
 
 EXPOSE 80
 
