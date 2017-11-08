@@ -21,7 +21,7 @@ class HunterRow extends Component {
             padding: "8px",
             borderRadius: "16px",
             border: "2px solid #000",
-            fontSize: "1.2em"
+            fontSize: "1.4em"
         };
 
         const collapsedRowStyle = {

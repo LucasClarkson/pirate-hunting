@@ -13,7 +13,7 @@ class HuntInnerRow extends Component {
             padding: "8px",
             borderRadius: "12px",
             border: "2px solid #000",
-            fontSize: "1em"
+            fontSize: ".8em"
         };
 
         const outerInfoStyle = {
