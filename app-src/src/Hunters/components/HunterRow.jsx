@@ -26,7 +26,8 @@ class HunterRow extends Component {
 
         const collapsedRowStyle = {
             width: "100%",
-            float: "left"
+            float: "left",
+            cursor: "pointer"
         }
 
         const nameStyle = {
@@ -42,8 +43,7 @@ class HunterRow extends Component {
         }
 
         const expandCollapseStyle = {
-            float: "right",
-            cursor: "pointer"
+            float: "right"
         }
 
         const huntsContainerStyle = {
@@ -62,9 +62,9 @@ class HunterRow extends Component {
 
         return (
             <div style={containerStyle}>
-                <div style={collapsedRowStyle}>
+                <div style={collapsedRowStyle} onClick={this.handleClick}>
                     <p style={nameStyle}>{this.props.hunter.name}</p>
-                    <img onClick={this.handleClick} style={expandCollapseStyle} src={this.state.isExpanded ? "/images/collapse_black.png" : "/images/expand_black.png"} />
+                    <img style={expandCollapseStyle} src={this.state.isExpanded ? "/images/collapse_black.png" : "/images/expand_black.png"} />
                     <p style={counterStyle}>Shot: {shotCount}</p>
                     <p style={counterStyle}>Observed: {observedCount}</p>
                     <p style={counterStyle}>Hunts: {this.props.hunts ? this.props.hunts.length : 0}</p>

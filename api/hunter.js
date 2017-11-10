@@ -53,7 +53,8 @@ module.exports = function (app, db) {
     });
 
     app.post('/api/hunter', function (req, res) {
-        if (!req.body.name) res.send({ok: false, why: "missing-name"});
+        console.log(req.body);
+        if (!req.body.name) return res.send({ok: false, why: "missing-name"});
         db.collection("hunter").findOne({hunterId: req.body.name.toLowerCase().split(' ').join('_')}, function(err, hunter) {
             if(err) return next(err);
             

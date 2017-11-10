@@ -16,8 +16,10 @@ class App extends Component {
     const { changePage } = this.props;
 
     const rootStyle = {
-      height: "100%",
-      backgroundColor: "#887e79"
+      height: "calc(100% - 24px)",
+      backgroundColor: "#887e79",
+      overflowY: "scroll",
+      paddingBottom: 24
     }
 
     const innerContainerStyle = {

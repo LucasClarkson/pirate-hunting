@@ -26,7 +26,9 @@ class Hunters extends Component {
     };
 
     handleSubmit = () => {
-        //TODO: save new hunter
+        //Save hunter
+        this.props.addHunter({name: this.state.newHunterName});
+
         this.handleClose();
     };
 
@@ -41,7 +43,7 @@ class Hunters extends Component {
                 label="Submit"
                 primary={true}
                 keyboardFocused={true}
-                onClick={this.handleClose}
+                onClick={this.handleSubmit}
             />,
         ];
 
@@ -61,7 +63,7 @@ class Hunters extends Component {
             <div style={this.props.style}>
                 {
                     (this.props.hunters && this.props.hunters.length > 0) ? 
-                    this.props.hunters.map((hunter, index) => {
+                    this.props.hunters.sort((a, b) => a.name > b.name ? 1 : -1).map((hunter, index) => {
                       return <HunterRow hunter={hunter} hunts={this.props.hunts[hunter.hunterId]} stands={this.props.stands} style={hunterItemStyle} />
                     }) : <p>You aint got no hunters</p>
                 }

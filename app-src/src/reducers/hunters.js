@@ -1,7 +1,8 @@
 import {
   INVALIDATE_HUNTERS,
   REQUEST_HUNTERS,
-  RECEIVE_HUNTERS
+  RECEIVE_HUNTERS,
+  NEW_HUNTER_CREATED
 } from '../Hunters/huntersActions';
 
 const hunters = (state = {
@@ -25,6 +26,11 @@ const hunters = (state = {
                 didInvalidate: false,
                 items: action.hunters,
                 lastUpdated: action.receivedAt
+            })
+        case NEW_HUNTER_CREATED:
+            const newArr = [...state.items, action.hunter];
+            return Object.assign({}, state, {
+                items: [...new Set(newArr)]
             })
 
         default:
